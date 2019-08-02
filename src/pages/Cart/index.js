@@ -106,5 +106,4 @@ const Cart = () => {
     </Container>
   );
 };
-
 export default Cart;
