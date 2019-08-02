@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
-function App() {
+import './config/ReactotronConfig';
+
+import GlobalStyles from './styles/global';
+import Routes from './routes';
+import store from './store/store';
+import history from './services/history';
+
+import Header from './components/Header';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router history={history}>
+        <Header />
+        <Routes />
+        <GlobalStyles />
+        <ToastContainer autoClose={3000} />
+      </Router>
+    </Provider>
   );
-}
+};
 
 export default App;
